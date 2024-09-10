@@ -25,34 +25,34 @@ while True:
     elif menu == 3: # 연락처 검색
         print('연락처를 검색합니다.')
         search_name = input('검색 이름: ')
-        #print(contact[search_name])
-        print(contact.get(search_name, '없는 이름입니다.'))      # index는 없을 경우 오류 발생하나, get은 오류 미발생
+
+        try:
+            print(contact[search_name])
+        except:
+            print('없는 이름입니다.')
+        # print(contact.get(searct_name, '없는 이름입니다.'))      # index는 없을 경우 오류 발생하나, get은 오류 미발생
         
 
     elif menu == 4: # 연락처 수정
         print('연락처를 수정합니다.')
 
-        mod_name = input('수정 이름 : ')
-        if mod_name in contact:                       # 등록된 이름이 있을 경우 이어서 수정 진행
+        try:
+            mod_name = input('수정 이름 : ')
             mod_tel = input('새 전화번호: ')
             contact[mod_name] = mod_tel
-
-        else:
+        except:
             print('등록되지 않은 이름입니다.')
-    
 
     elif menu == 5: # 연락처 삭제
         print('연락처를 삭제합니다.')
         del_name = input('삭제 이름 : ')
-        print('연락처 삭제가 완료되었습니다.')
 
-        if del_name in contact:
+        try:
             del contact[del_name]
+            print('연락처 삭제가 완료되었습니다.')
 
-        else:
+        except:
             print('등록되지 않은 이름입니다.')
-
-
     
     elif menu == 9: # 프로그램 종료
         print('프로그램을 종료합니다.')
